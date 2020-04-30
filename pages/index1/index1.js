@@ -16,7 +16,7 @@ Page({
   makertap: function (e) {
     var id = e.markerId;
     var that = this;
-    console.log(e)
+    console.log('击标记点时触发',e)
     that.showMarkerInfo(that.data.markers, id);
     // that.changeMarkerColor(markersData, id);
   },
@@ -26,47 +26,87 @@ Page({
     var myAmapFun = new amapFile.AMapWX({key: 'fbce7d61d1f13efdbc971a073ed4d9d8'});
 
     // 获取定位信息 
-    wx.getLocation({
-      success: function(res) {
-        
-      },
-    })
+    // wx.getLocation({
+    //   type: 'gcj02',
+    //   success: function(res) {
+    //     console.log(res);
+    // })
 
-    // 地址解析
-    myAmapFun.getRegeo({
-      iconPath: "../../img/marker.png",
-      // latitude: 30.656648,
-      // longitude: 111.37108,
-      location:'111.37108,30.656648',
-      success: (res) => {
-        console.log(res, res[0].regeocodeData.formatted_address)
-        var maker = [{
-          id: res[0].id,
-          longitude: res[0].longitude,
-          latitude: res[0].latitude,
-          iconPath: res[0].iconPath,
-          width: '3',
-          height: '50%'
-        }];
+    // 获取定位信息 
+    wx.getLocation({
+      type: 'gcj02',
+      success: function(res) {
+        console.log(res);
         that.setData({
-          markers: maker
+          longitude: res.longitude,
+          latitude: res.latitude,
+          markers:[{
+            id: 0,   //marker一定要有id，不然事件点击无效
+            longitude: res.longitude, 
+            latitude: res.latitude,
+            iconPath: "../../img/marker.png"
+          }]
         });
-        this.setData({
-          // address: res[0].regeocodeData.formatted_address
-          longitude: res[0].longitude,
-          latitude: res[0].latitude,
-          textData:{
-            name: res[0].name,
-            desc: res[0].desc
+
+        // 地址解析
+        myAmapFun.getRegeo({
+          location: res.longitude + ',' + res.latitude,
+          success: (resReo) => {
+            console.log(resReo, resReo[0].regeocodeData.formatted_address)
+            that.setData({
+              textData: {
+                name: resReo[0].name,
+                desc: resReo[0].desc
+              }
+            })
+          },
+          fail: function (info) {
+            wx.showModal({ title: info.errMsg })
           }
         })
       },
-      fail: function (info) {
-         wx.showModal({ title: info.errMsg })
+      fail:function(info) {
+        wx.showModal({
+          title: info.errMsg
+        })
       }
     })
+
+    // myAmapFun.getRegeo({
+    //   iconPath: "../../img/marker.png",
+    //   // type: 'gcj02',
+    //   // latitude: 30.656648,
+    //   // longitude: 111.37108,
+    //   // location:'111.37108,30.656648',
+    //   // location: res.longitude + ',' + res.latitude,
+    //   success: (res) => {
+    //     console.log(res, res[0].regeocodeData.formatted_address)
+    //     var maker = [{
+    //       id: res[0].id,
+    //       longitude: res[0].longitude,
+    //       latitude: res[0].latitude,
+    //       iconPath: res[0].iconPath,
+    //       // width: '3',
+    //       // height: '50%'
+    //     }];
+    //     that.setData({
+    //       markers: maker,
+    //       // address: res[0].regeocodeData.formatted_address
+    //       longitude: res[0].longitude,
+    //       latitude: res[0].latitude,
+    //       textData: {
+    //         name: res[0].name,
+    //         desc: res[0].desc
+    //       }
+    //     })
+    //   },
+    //   fail: function (info) {
+    //     wx.showModal({ title: info.errMsg })
+    //   }
+    // })
   },
 
+  
   showMarkerInfo: function (data, i) {
     var that = this;
     that.setData({

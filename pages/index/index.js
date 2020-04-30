@@ -45,7 +45,7 @@ Page({
   },
 
   /**
-   * 输入搜索
+   * 输入搜索页面
    */
   naviToInp: function(e) {
     wx.navigateTo({
