@@ -1,0 +1,10 @@
+<!--pages/index/index.wxml-->
+<!-- <text>pages/index/index.wxml</text> -->
+<view class="container">
+  <view class="naviButton" id="Regeo" bindtouchstart="naviToRegeo">地址解析</view>
+  <view class="naviButton" id="weahter" bindtouchstart="naviToPoly">多边形区域</view>
+  <view class="naviButton" id="staticmap" bindtouchstart="naviToStatic">静态图</view>
+  <view class="naviButton" id="poi" bindtouchstart="naviToCov">地图围栏</view>
+  <view class="naviButton" id="poi" bindtouchstart="naviToInp">输入搜索</view>
+  <!-- <view class="naviButton" id="navi" bindtouchstart="naviToNavi">出行路线规划</view> -->
+</view>

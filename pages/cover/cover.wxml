@@ -1,0 +1,19 @@
+<!--pages/cover/cover.wxml-->
+<!-- <text>pages/cover/cover.wxml</text> -->
+
+<!-- <view class="map_container">
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="12" show-location="false" polygons="{{polygons}}"></map>
+</view> -->
+
+<view class="map_container">
+  <!-- bindregionchange  视野发生变化时触发 -->
+  <!-- polygons  多边形	-->
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="12" bindregionchange="mapchangeTap" polygons="{{polygons}}">
+    <!-- <cover-image 覆盖在原生组件之上的图片视图> -->
+    <cover-image class="img-map" src="../../img/marker_checked.png"></cover-image>
+  </map>
+</view>
+<view class="map_text">
+  <text class="h1">{{textData.name}}</text>
+  <text>{{textData.desc}}</text>
+</view>

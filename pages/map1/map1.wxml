@@ -1,0 +1,10 @@
+<!--pages/map1/map1.wxml-->
+<!-- <text>pages/map1/map1.wxml</text> -->
+
+<!--pages/map2/map2.wxml-->
+<!-- <text>pages/map2/map2.wxml</text> -->
+<!-- polygons 多边形区域 -->
+<view class="map_container">
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="12" show-location="false" polygons="{{polygons}}"></map>
+</view>
+

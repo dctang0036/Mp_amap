@@ -1,0 +1,10 @@
+<!--pages/poly/poly.wxml-->
+<!-- <text>pages/poly/poly.wxml</text> -->
+
+<!-- <view class="map_container">
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap" polygons="{{polygons[0]}}"></map>
+</view> -->
+
+<view class="img_box">
+  <image src="{{src}}"></image>
+</view>
