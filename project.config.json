@@ -17,7 +17,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
 	"appid": "wxe15411c4c41f5c1d",
-	"projectname": "Test",
+	"projectname": "Mp_amap",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
